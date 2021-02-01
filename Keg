@@ -1,0 +1,6 @@
+(source gnu melpa)
+
+(package (repeep
+          (recipe . (:fetcher github :repo "ROCKTAKEY/repeep"))))
+
+(dev-dependency undercover)

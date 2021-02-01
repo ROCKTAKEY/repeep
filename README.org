@@ -1,0 +1,9 @@
+﻿[[https://github.com/ROCKTAKEY/repeep][https://img.shields.io/github/tag/ROCKTAKEY/repeep.svg?style=flat-square]]
+[[file:LICENSE][https://img.shields.io/github/license/ROCKTAKEY/repeep.svg?style=flat-square]]
+[[https://codecov.io/gh/ROCKTAKEY/repeep?branch=master][https://img.shields.io/codecov/c/github/ROCKTAKEY/repeep.svg?style=flat-square]]
+[[https://github.com/ROCKTAKEY/repeep/actions][https://img.shields.io/github/workflow/status/ROCKTAKEY/repeep/CI/master.svg?style=flat-square]]
+* Repeat some action with some sleep.
+
+* How to Use?
+* License
+  This package is licensed by GPLv3. See [[file:LICENSE][LICENSE]].
