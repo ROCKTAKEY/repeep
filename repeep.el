@@ -51,6 +51,26 @@ FUNCTION is used as action instead of `repeat'."
       (call-interactively (or function last-repeatable-command)))
     (sit-for interval)))
 
+(defun repeep-end-or-call-macro (&optional arg interval)
+  "Same as `kmacro-end-and-call-macro' except that ARG is 0.
+ ARG is gotten from universal argument."
+  (interactive
+   (if (eq current-prefix-arg 0)
+       (list
+        current-prefix-arg
+        (read-number "Repeat interval(sec): " repeep-default-interval))
+     (list current-prefix-arg nil)))
+  (if interval
+      (repeep interval #'kmacro-end-or-call-macro)
+    (kmacro-end-or-call-macro arg)))
+
+(define-minor-mode
+  repeep-macro-mode
+  "Use `kmacro-end-and-call-macro' instead of `repeep-end-or-call-macro'."
+  nil
+  "RM"
+  `((,(kbd "<f4>")  . repeep-end-or-call-macro)
+    (,(kbd "C-x e") . repeep-end-or-call-macro)))
 
 (provide 'repeep)
 ;;; repeep.el ends here
