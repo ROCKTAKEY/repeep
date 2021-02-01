@@ -32,6 +32,25 @@
   :group 'tools
   :prefix "repeep")
 
+(defcustom repeep-default-interval 1
+  "Second for which Emacs sleep each action in `repeep'."
+  :group 'repeep
+  :type 'number)
+
+(defun repeep (&optional interval function)
+  "Repeat action run before with sleep.
+Emacs sleep for INTERVAL seconds.
+FUNCTION is used as action instead of `repeat'."
+  (interactive
+   (list (if current-prefix-arg
+             (read-number "Repeat interval(sec): " repeep-default-interval)
+           repeep-default-interval)))
+  (while (not quit-flag)
+    (let ((inhibit-quit t)
+          (current-prefix-arg nil))
+      (call-interactively (or function last-repeatable-command)))
+    (sit-for interval)))
+
 
 (provide 'repeep)
 ;;; repeep.el ends here
