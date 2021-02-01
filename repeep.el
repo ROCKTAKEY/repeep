@@ -27,5 +27,11 @@
 
 ;;; Code:
 
+(defgroup repeep ()
+  "Group for repeep."
+  :group 'tools
+  :prefix "repeep")
+
+
 (provide 'repeep)
 ;;; repeep.el ends here
