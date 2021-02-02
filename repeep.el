@@ -37,6 +37,8 @@
   :group 'repeep
   :type 'number)
 
+(defvar repeep--last-command nil)
+
 (defun repeep (&optional interval function)
   "Repeat action run before with sleep.
 Emacs sleep for INTERVAL seconds.
@@ -45,11 +47,18 @@ FUNCTION is used as action instead of `repeat'."
    (list (if current-prefix-arg
              (read-number "Repeat interval(sec): " repeep-default-interval)
            repeep-default-interval)))
-  (while (not quit-flag)
-    (let ((inhibit-quit t)
-          (current-prefix-arg nil))
-      (call-interactively (or function last-repeatable-command)))
-    (sit-for interval)))
+  (let ((command (or function
+                     (if (eq #'repeep last-repeatable-command)
+                         repeep--last-command
+                       last-repeatable-command))))
+    (unless (or function
+                (eq #'repeep last-repeatable-command))
+      (setq repeep--last-command last-repeatable-command))
+    (while (not quit-flag)
+      (let ((inhibit-quit t)
+            (current-prefix-arg nil))
+        (call-interactively command))
+      (sit-for interval))))
 
 (defun repeep-end-or-call-macro (&optional arg interval)
   "Same as `kmacro-end-and-call-macro' except that ARG is 0.
