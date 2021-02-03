@@ -79,7 +79,9 @@ FUNCTION is used as action instead of `repeat'."
   nil
   "RM"
   `((,(kbd "<f4>")  . repeep-end-or-call-macro)
-    (,(kbd "C-x e") . repeep-end-or-call-macro)))
+    (,(kbd "C-x e") . repeep-end-or-call-macro))
+  :global t
+  :group 'repeep)
 
 (provide 'repeep)
 ;;; repeep.el ends here
