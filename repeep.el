@@ -5,7 +5,7 @@
 ;; Author: ROCKTAKEY <rocktakey@gmail.com>
 ;; Keywords: tools, convenience
 
-;; Version: 0.0.3
+;; Version: 0.0.4
 ;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/ROCKTAKEY/repeep
 ;; This program is free software; you can redistribute it and/or modify
@@ -79,12 +79,11 @@ to run `repeep'."
 (define-minor-mode
   repeep-macro-mode
   "Use `kmacro-end-and-call-macro' instead of `repeep-end-or-call-macro'."
-  nil
-  "RM"
-  `((,(kbd "<f4>")  . repeep-end-or-call-macro)
-    (,(kbd "C-x e") . repeep-end-or-call-macro))
   :global t
-  :group 'repeep)
+  :group 'repeep
+  :keymap
+  `((,(kbd "<f4>")  . repeep-end-or-call-macro)
+    (,(kbd "C-x e") . repeep-end-or-call-macro)))
 
 (provide 'repeep)
 ;;; repeep.el ends here
