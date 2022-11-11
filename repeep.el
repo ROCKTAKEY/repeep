@@ -5,7 +5,7 @@
 ;; Author: ROCKTAKEY <rocktakey@gmail.com>
 ;; Keywords: tools, convenience
 
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: ((emacs "24.1"))
 ;; URL: https://github.com/ROCKTAKEY/repeep
 ;; This program is free software; you can redistribute it and/or modify
@@ -62,7 +62,9 @@ FUNCTION is used as action instead of `repeat'."
 
 (defun repeep-end-or-call-macro (&optional arg interval)
   "Same as `kmacro-end-and-call-macro' except that ARG is 0.
- ARG is gotten from universal argument."
+ARG is gotten from universal argument.
+When ARG is 0, INTERVAL is asked.  INTERVAL is repeat interval
+to run `repeep'."
   (interactive
    (if (eq current-prefix-arg 0)
        (list
